@@ -7,8 +7,7 @@ extern Coffee::Application* Coffee::CreateApplication();
 int main(int argc, char** argv)
 {
 	Coffee::Log::Init();
-	CF_CORE_WARN("Initialized Log!");
-	CF_INFO("Hello!");
+	CF_CORE_WARN("Initialized Log !");
 
 	auto app = Coffee::CreateApplication();
 	app->Run();

@@ -18,6 +18,9 @@ project "Coffee"
 	targetdir ("bin/" .. outputdir  .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir  .. "/%{prj.name}")
 
+	pchheader "cfpch.h"
+	pchsource "Coffee/src/cfpch.cpp"
+
 	files
 	{
 		"%{prj.name}/src/**.h",
@@ -26,6 +29,7 @@ project "Coffee"
 
 	includedirs
 	{
+		"%{prj.name}/src",
 		"%{prj.name}/vendor/spdlog/include"
 	}
 
