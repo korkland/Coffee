@@ -1,8 +1,8 @@
 #pragma once
 
 #include "Core.h"
-#include "spdlog\spdlog.h"
-#include "spdlog\fmt\ostr.h"
+#include "spdlog/spdlog.h"
+#include "spdlog/fmt/ostr.h"
 
 namespace Coffee {
 
@@ -25,11 +25,11 @@ namespace Coffee {
 #define CF_CORE_INFO(...)     ::Coffee::Log::GetCoreLogger()->info(__VA_ARGS__)
 #define CF_CORE_WARN(...)     ::Coffee::Log::GetCoreLogger()->warn(__VA_ARGS__)
 #define CF_CORE_ERROR(...)    ::Coffee::Log::GetCoreLogger()->error(__VA_ARGS__)
-#define CF_CORE_CRITICAL(...) ::Coffee::Log::GetCoreLogger()->critical(__VA_ARGS__)
+#define CF_CORE_FATAL(...) 	  ::Coffee::Log::GetCoreLogger()->fatal(__VA_ARGS__)
 								
 // Client log macros			
 #define CF_TRACE(...)         ::Coffee::Log::GetClientLogger()->trace(__VA_ARGS__)
 #define CF_INFO(...)          ::Coffee::Log::GetClientLogger()->info(__VA_ARGS__)
 #define CF_WARN(...)          ::Coffee::Log::GetClientLogger()->warn(__VA_ARGS__)
 #define CF_ERROR(...)         ::Coffee::Log::GetClientLogger()->error(__VA_ARGS__)
-#define CF_CRITICAL(...)      ::Coffee::Log::GetClientLogger()->critical(__VA_ARGS__)
+#define CF_FATAL(...)         ::Coffee::Log::GetClientLogger()->fatal(__VA_ARGS__)

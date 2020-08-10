@@ -1,6 +1,6 @@
 #pragma once
-#include "cfpch.h"
 
+#include "cfpch.h"
 #include "Coffee/Core.h"
 
 namespace Coffee {
@@ -22,24 +22,23 @@ namespace Coffee {
 	enum EventCategory
 	{
 		None = 0,
-		EventCategoryApplication	= BIT(0),
-		EventCategoryInput			= BIT(1),
-		EventCategoryKeyboard		= BIT(2),
-		EventCategoryMouse			= BIT(3),
-		EventCategoryMouseButton	= BIT(4)
+		EventCategoryApplication    = BIT(0),
+		EventCategoryInput          = BIT(1),
+		EventCategoryKeyboard       = BIT(2),
+		EventCategoryMouse          = BIT(3),
+		EventCategoryMouseButton    = BIT(4)
 	};
 
-#define EVENT_CLASS_TYPE(type) static EventType GetStaticType() { return EventType::type; }\
+#define EVENT_CLASS_TYPE(type) static EventType GetStaticType() { return EventType::##type; }\
 								virtual EventType GetEventType() const override { return GetStaticType(); }\
 								virtual const char* GetName() const override { return #type; }
 
 #define EVENT_CLASS_CATEGORY(category) virtual int GetCategoryFlags() const override { return category; }
 
-	class Event
+	class COFFEE_API Event
 	{
+		friend class EventDispatcher;
 	public:
-		virtual ~Event() = default;
-
 		virtual EventType GetEventType() const = 0;
 		virtual const char* GetName() const = 0;
 		virtual int GetCategoryFlags() const = 0;
@@ -63,7 +62,6 @@ namespace Coffee {
 		{
 		}
 
-		// F will be deduced by the compiler
 		template<typename T>
 		bool Dispatch(EventFn<T> func)
 		{
@@ -83,3 +81,4 @@ namespace Coffee {
 		return os << e.ToString();
 	}
 }
+

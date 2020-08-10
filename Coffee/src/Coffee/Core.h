@@ -4,10 +4,18 @@
 	#ifdef CF_BUILD_DLL
 		#define COFFEE_API __declspec(dllexport)
 	#else
-		#define COFFEE_API __declspec(dllexport)
+		#define COFFEE_API __declspec(dllimport)
 	#endif
 #else
-	#error Coffe only support Windows !
+	#error Coffe only supports Windows !
+#endif
+
+#ifdef CF_ENABLE_ASSERTS
+	#define CF_ASSERT(x, ...) {if(!(x)) {CF_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
+	#define CF_CORE_ASSERT(x, ...) {if(!(x)) {CF_CORE_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
+#else
+	#define CF_ASSERT(x, ...)
+	#define CF_CORE_ASSERT(x, ...)
 #endif
 
 #define BIT(x) (1 << x)
