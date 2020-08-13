@@ -14,9 +14,11 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 IncludeDir = {}
 IncludeDir["GLFW"] = "Coffee/vendor/GLFW/include"
 IncludeDir["Glad"] = "Coffee/vendor/Glad/include"
+IncludeDir["ImGui"] = "Coffee/vendor/imgui"
 
 include "Coffee/vendor/GLFW"
 include "Coffee/vendor/Glad"
+include "Coffee/vendor/imgui"
 
 project "Coffee"
     location "Coffee"
@@ -40,13 +42,15 @@ project "Coffee"
         "%{prj.name}/src",
         "%{prj.name}/vendor/spdlog/include",
         "%{IncludeDir.GLFW}",
-		"%{IncludeDir.Glad}"
+        "%{IncludeDir.Glad}",
+        "%{IncludeDir.ImGui}"
     }
     
     links
     {
         "GLFW",
-		"Glad",
+        "Glad",
+        "ImGui",
         "opengl32.lib"
     }
     
@@ -69,17 +73,17 @@ project "Coffee"
     
     filter "configurations:Debug"
         defines "CF_DEBUG"
-		buildoptions "/MDd"
+        buildoptions "/MDd"
         symbols "On"
     
     filter "configurations:Release"
         defines "CF_RELEASE"
-		buildoptions "/MD"
+        buildoptions "/MD"
         optimize "On"
     
     filter "configurations:Dist"
         defines "CF_DIST"
-		buildoptions "/MD"
+        buildoptions "/MD"
         optimize "On"
 
 project "Sandbox"
@@ -119,16 +123,16 @@ project "Sandbox"
     
     filter "configurations:Debug"
         defines "CF_DEBUG"
-		buildoptions "/MDd"
+        buildoptions "/MDd"
         symbols "On"
     
     filter "configurations:Release"
         defines "CF_RELEASE"
-		buildoptions "/MD"
+        buildoptions "/MD"
         optimize "On"
     
     filter "configurations:Dist"
         defines "CF_DIST"
-		buildoptions "/MD"
+        buildoptions "/MD"
         optimize "On"
     
