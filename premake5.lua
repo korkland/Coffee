@@ -1,6 +1,7 @@
 workspace "Coffee"
     architecture "x64"
-    
+    startproject "Sandbox"
+
     configurations
     {
         "Debug",
@@ -20,12 +21,11 @@ include "Coffee/vendor/GLFW"
 include "Coffee/vendor/Glad"
 include "Coffee/vendor/imgui"
 
-startproject "Sandbox"
-
 project "Coffee"
     location "Coffee"
     kind "SharedLib"
     language "C++"
+	staticruntime "off"
     
     targetdir ("bin/" .. outputdir  .. "/%{prj.name}")
     objdir ("bin-int/" .. outputdir  .. "/%{prj.name}")
@@ -58,7 +58,6 @@ project "Coffee"
     
     filter "system:windows"
         cppdialect "C++17"
-        staticruntime "On"
         systemversion "latest"
         
         defines
@@ -70,28 +69,29 @@ project "Coffee"
         
         postbuildcommands
         {
-            ("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Sandbox")
+            ("{COPY} %{cfg.buildtarget.relpath} \"../bin/" .. outputdir .. "/Sandbox/\"")
         }
     
     filter "configurations:Debug"
         defines "CF_DEBUG"
-        buildoptions "/MDd"
+        runtime "Debug"
         symbols "On"
     
     filter "configurations:Release"
         defines "CF_RELEASE"
-        buildoptions "/MD"
+        runtime "Release"
         optimize "On"
     
     filter "configurations:Dist"
         defines "CF_DIST"
-        buildoptions "/MD"
+        runtime "Release"
         optimize "On"
 
 project "Sandbox"
     location "Sandbox"
     kind "ConsoleApp"
     language "C++"
+	staticruntime "off"
     
     targetdir ("bin/" .. outputdir  .. "/%{prj.name}")
     objdir ("bin-int/" .. outputdir  .. "/%{prj.name}")
@@ -115,7 +115,6 @@ project "Sandbox"
     
     filter "system:windows"
         cppdialect "C++17"
-        staticruntime "On"
         systemversion "latest"
     
         defines
@@ -125,16 +124,16 @@ project "Sandbox"
     
     filter "configurations:Debug"
         defines "CF_DEBUG"
-        buildoptions "/MDd"
+        runtime "Debug"
         symbols "On"
     
     filter "configurations:Release"
         defines "CF_RELEASE"
-        buildoptions "/MD"
+        runtime "Release"
         optimize "On"
     
     filter "configurations:Dist"
         defines "CF_DIST"
-        buildoptions "/MD"
+        runtime "Release"
         optimize "On"
     
