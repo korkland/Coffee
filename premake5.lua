@@ -20,6 +20,8 @@ include "Coffee/vendor/GLFW"
 include "Coffee/vendor/Glad"
 include "Coffee/vendor/imgui"
 
+startproject "Sandbox"
+
 project "Coffee"
     location "Coffee"
     kind "SharedLib"
