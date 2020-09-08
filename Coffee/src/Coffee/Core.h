@@ -7,7 +7,7 @@
 		#define COFFEE_API __declspec(dllimport)
 	#endif
 #else
-	#error Coffe only supports Windows !
+	#error Coffee only supports Windows !
 #endif
 
 #ifdef CF_DEBUG
