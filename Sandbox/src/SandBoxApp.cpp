@@ -10,12 +10,21 @@ public:
 
 	void OnUpdate() override
 	{
-		CF_INFO("ExamplerLayer::Update");
+		//CF_INFO("ExamplerLayer::Update");
+
+		if (Coffee::Input::IsKeyPressed(CF_KEY_TAB))
+			CF_TRACE("Tab key is pressed(poll)!");
 	}
 
 	void OnEvent(Coffee::Event& event) override
 	{
-		CF_TRACE("{0}", event);
+		if (event.GetEventType() == Coffee::EventType::KeyPressed)
+		{
+			Coffee::KeyPressedEvent& e = (Coffee::KeyPressedEvent&)event;
+			if (e.GetKeyCode() == CF_KEY_TAB)
+				CF_TRACE("Tab key is pressed (event)!");
+			CF_TRACE("{0}", (char)e.GetKeyCode());
+		}
 	}
 };
 

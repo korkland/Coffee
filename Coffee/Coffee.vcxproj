@@ -150,6 +150,8 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Coffee\KeyCodes.h" />
+    <ClInclude Include="src\Coffee\MouseButtonCodes.h" />
     <ClInclude Include="src\Coffee.h" />
     <ClInclude Include="src\Coffee\Application.h" />
     <ClInclude Include="src\Coffee\Core.h" />

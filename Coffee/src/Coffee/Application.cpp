@@ -5,6 +5,8 @@
 
 #include <glad/glad.h>
 
+#include "Input.h"
+
 namespace Coffee {
 
 	Application* Application::s_Instance = nullptr;
