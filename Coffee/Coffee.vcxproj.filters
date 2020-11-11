@@ -13,6 +13,9 @@
     <Filter Include="src\Coffee\ImGui">
       <UniqueIdentifier>{2EB62D1C-1AAF-4C6E-43E1-31F32F392C7A}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Coffee\Renderer">
+      <UniqueIdentifier>{2A1637ED-9677-14FB-1FE5-5AAD8B454BBA}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\Platform">
       <UniqueIdentifier>{21CA02E5-0D2D-9289-B6B2-CA3FA2F45D0C}</UniqueIdentifier>
     </Filter>
@@ -90,10 +93,13 @@
     <ClInclude Include="src\Coffee\MouseButtonCodes.h">
       <Filter>src\Coffee</Filter>
     </ClInclude>
+    <ClInclude Include="src\Coffee\Renderer\GraphicsContext.h">
+      <Filter>src\Coffee\Renderer</Filter>
+    </ClInclude>
     <ClInclude Include="src\Coffee\Window.h">
       <Filter>src\Coffee</Filter>
     </ClInclude>
-    <ClInclude Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.h">
+    <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h">
       <Filter>src\Platform\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="src\Platform\Windows\WindowsInput.h">
@@ -1329,10 +1335,14 @@
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp">
       <Filter>vendor\glm\glm</Filter>
     </ClInclude>
+    <ClInclude Include="src\Coffee\Renderer\Shader.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Coffee\Application.cpp">
       <Filter>src\Coffee</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Coffee\ImGui\ImGuiBuild.cpp">
+      <Filter>src\Coffee\ImGui</Filter>
     </ClCompile>
     <ClCompile Include="src\Coffee\ImGui\ImGuiLayer.cpp">
       <Filter>src\Coffee\ImGui</Filter>
@@ -1346,7 +1356,7 @@
     <ClCompile Include="src\Coffee\Log.cpp">
       <Filter>src\Coffee</Filter>
     </ClCompile>
-    <ClCompile Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.cpp">
+    <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp">
       <Filter>src\Platform\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp">
@@ -1358,5 +1368,6 @@
     <ClCompile Include="src\cfpch.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\Coffee\Renderer\Shader.cpp" />
   </ItemGroup>
 </Project>

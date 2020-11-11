@@ -1,10 +1,14 @@
 #pragma once
 
 #ifdef CF_PLATFORM_WINDOWS
-	#ifdef CF_BUILD_DLL
-		#define COFFEE_API __declspec(dllexport)
+	#if CF_DYNAMIC_LINK
+		#ifdef CF_BUILD_DLL
+			#define COFFEE_API __declspec(dllexport)
+		#else
+			#define COFFEE_API __declspec(dllimport)
+		#endif
 	#else
-		#define COFFEE_API __declspec(dllimport)
+		#define COFFEE_API
 	#endif
 #else
 	#error Coffee only supports Windows !

@@ -2,6 +2,8 @@
 
 #include "Coffee/Window.h"
 
+#include "Coffee/Renderer/GraphicsContext.h"
+
 #include <GLFW/glfw3.h>
 
 namespace Coffee {
@@ -28,6 +30,7 @@ namespace Coffee {
 		virtual void Shutdown();
 	private:
 		GLFWwindow* m_Window;
+		GraphicsContext* m_Context;
 
 		struct WindowData
 		{

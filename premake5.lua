@@ -18,15 +18,18 @@ IncludeDir["Glad"] = "Coffee/vendor/Glad/include"
 IncludeDir["ImGui"] = "Coffee/vendor/imgui"
 IncludeDir["glm"] = "Coffee/vendor/glm"
 
+group "Dependencies"
 include "Coffee/vendor/GLFW"
 include "Coffee/vendor/Glad"
 include "Coffee/vendor/imgui"
+group ""
 
 project "Coffee"
     location "Coffee"
-    kind "SharedLib"
+    kind "StaticLib"
+    cppdialect "C++17"
     language "C++"
-	staticruntime "off"
+    staticruntime "on"
     
     targetdir ("bin/" .. outputdir  .. "/%{prj.name}")
     objdir ("bin-int/" .. outputdir  .. "/%{prj.name}")
@@ -38,8 +41,13 @@ project "Coffee"
     {
         "%{prj.name}/src/**.h",
         "%{prj.name}/src/**.cpp",
-		"%{prj.name}/vendor/glm/glm/**.hpp",
-		"%{prj.name}/vendor/glm/glm/**.inl"
+        "%{prj.name}/vendor/glm/glm/**.hpp",
+        "%{prj.name}/vendor/glm/glm/**.inl"
+    }
+
+    defines
+    {
+        "_CRT_SECURE_NO_WARNINGS"
     }
     
     includedirs
@@ -49,7 +57,7 @@ project "Coffee"
         "%{IncludeDir.GLFW}",
         "%{IncludeDir.Glad}",
         "%{IncludeDir.ImGui}",
-		"%{IncludeDir.glm}"
+        "%{IncludeDir.glm}"
     }
     
     links
@@ -61,41 +69,35 @@ project "Coffee"
     }
     
     filter "system:windows"
-        cppdialect "C++17"
         systemversion "latest"
-        
         defines
         {
             "CF_PLATFORM_WINDOWS",
             "CF_BUILD_DLL",
             "GLFW_INCLUDE_NONE"
         }
-        
-        postbuildcommands
-        {
-            ("{COPY} %{cfg.buildtarget.relpath} \"../bin/" .. outputdir .. "/Sandbox/\"")
-        }
     
     filter "configurations:Debug"
         defines "CF_DEBUG"
         runtime "Debug"
-        symbols "On"
+        symbols "on"
     
     filter "configurations:Release"
         defines "CF_RELEASE"
         runtime "Release"
-        optimize "On"
+        optimize "on"
     
     filter "configurations:Dist"
         defines "CF_DIST"
         runtime "Release"
-        optimize "On"
+        optimize "on"
 
 project "Sandbox"
     location "Sandbox"
     kind "ConsoleApp"
     language "C++"
-	staticruntime "off"
+    cppdialect "C++17"
+    staticruntime "on"
     
     targetdir ("bin/" .. outputdir  .. "/%{prj.name}")
     objdir ("bin-int/" .. outputdir  .. "/%{prj.name}")
@@ -110,6 +112,7 @@ project "Sandbox"
     {
         "Coffee/vendor/spdlog/include",
         "Coffee/src",
+		"Coffee/vendor",
 		"%{IncludeDir.glm}"
     }
     
@@ -119,7 +122,6 @@ project "Sandbox"
     }
     
     filter "system:windows"
-        cppdialect "C++17"
         systemversion "latest"
     
         defines
@@ -130,15 +132,15 @@ project "Sandbox"
     filter "configurations:Debug"
         defines "CF_DEBUG"
         runtime "Debug"
-        symbols "On"
+        symbols "on"
     
     filter "configurations:Release"
         defines "CF_RELEASE"
         runtime "Release"
-        optimize "On"
+        optimize "on"
     
     filter "configurations:Dist"
         defines "CF_DIST"
         runtime "Release"
-        optimize "On"
+        optimize "on"
     
