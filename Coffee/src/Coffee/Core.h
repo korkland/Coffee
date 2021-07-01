@@ -4,8 +4,8 @@
 	#ifdef CF_BUILD_DLL
 		#define COFFEE_API __declspec(dllexport)
 	#else
-		#define COFFEE_API __declspec(dllexport)
+		#define COFFEE_API __declspec(dllimport)
 	#endif
 #else
-	#error Coffe only support Windows !
+	#error Coffee only support Windows !
 #endif
