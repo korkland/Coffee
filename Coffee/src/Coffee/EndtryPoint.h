@@ -10,6 +10,10 @@ extern Coffee::Application* Coffee::CreateApplication();
 
 int main(int argc, char** argv)
 {
+	Coffee::Log::Init();
+	CF_CORE_WARN("Init Log!");
+	CF_CLIENT_INFO("Hello client {0}!", 5);
+
 	auto app = Coffee::CreateApplication();
 	app->Run();
 
