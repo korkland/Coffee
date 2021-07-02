@@ -1,10 +1,8 @@
 #pragma once
 
-#include "Coffee/Core.h"
+#include "cfpch.h"
 
-#include <string>
-#include <functional>
-#include <sstream>
+#include "Coffee/Core.h"
 
 namespace Coffee {
 
