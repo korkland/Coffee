@@ -8,7 +8,7 @@ namespace Coffee {
 
 	Application::Application()
 	{
-
+		m_Window = std::unique_ptr<Window>(Window::Create());
 	}
 	
 	Application::~Application()
@@ -18,14 +18,9 @@ namespace Coffee {
 	
 	void Application::Run()
 	{
-		WindowResizeEvent evnt(1280, 720);
-
-		if (evnt.IsInCategory(EventCategoryApplication))
-			CF_TRACE(evnt.ToString());
-
-		if (evnt.IsInCategory(EventCategoryInput))
-			CF_TRACE(evnt.ToString());
-
-		while (true);
+		while (m_Running)
+		{
+			m_Window->OnUpdate();
+		}
 	}
 }
