@@ -33,7 +33,6 @@ namespace Coffee {
 
 	class COFFEE_API Event
 	{
-		friend class EventDispatcher;
 	public:
 		virtual EventType GetEventType() const = 0;
 		virtual const char* GetName() const = 0;
@@ -44,7 +43,8 @@ namespace Coffee {
 		{
 			return GetCategoryFlags() & category;
 		}
-	protected:
+
+	public:
 		bool m_Handled = false;
 	};
 
