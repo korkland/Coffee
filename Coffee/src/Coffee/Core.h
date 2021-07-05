@@ -18,5 +18,6 @@
 	#define CF_CORE_ASSERT(x, ...)
 #endif // CF_ENABLE_ASSERTS
 
+#define CF_BIND_EVENT_FN(x) std::bind(&x, this, std::placeholders::_1)
 
 #define BIT(x) (1 << x)
