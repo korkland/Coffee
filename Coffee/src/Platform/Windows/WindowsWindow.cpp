@@ -5,6 +5,8 @@
 #include "Coffee/Events/KeyEvent.h"
 #include "Coffee/Events/MouseEvent.h"
 
+#include <glad/glad.h>
+
 namespace Coffee {
 
 	static bool s_GLFWInitialized = false;
@@ -68,6 +70,8 @@ namespace Coffee {
 
 		m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, props.Title.c_str(), nullptr, nullptr);
 		glfwMakeContextCurrent(m_Window);
+		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
+		CF_CORE_ASSERT(status, "Failed to initialized Glad!");
 		glfwSetWindowUserPointer(m_Window, &m_Data);
 		SetVSync(true);
 
