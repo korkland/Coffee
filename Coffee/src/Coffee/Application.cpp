@@ -3,6 +3,8 @@
 
 #include <glad/glad.h>
 
+#include "Input.h"
+
 namespace Coffee {
 
 	Application* Application::s_Instance = nullptr;
@@ -43,6 +45,9 @@ namespace Coffee {
 
 			for (Layer* layer : m_LayerStack)
 				layer->OnUpdate();
+
+			auto[x, y] = Input::GetMousePosition();
+			CF_CORE_TRACE("{0}, {1}", x, y);
 
 			m_Window->OnUpdate();
 		}
