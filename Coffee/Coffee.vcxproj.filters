@@ -71,6 +71,8 @@
       <Filter>Platform\Windows</Filter>
     </ClInclude>
     <ClInclude Include="src\cfpch.h" />
+    <ClInclude Include="src\Coffee\KeyCodes.h" />
+    <ClInclude Include="src\Coffee\MouseButtonCodes.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Coffee\Application.cpp">
