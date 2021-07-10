@@ -7,6 +7,8 @@
 #include "Coffee/Events/Event.h"
 #include "Coffee/Events/ApplicationEvent.h"
 
+#include "Coffee/ImGui/ImGuiLayer.h"
+
 namespace Coffee {
 
 	class COFFEE_API Application
@@ -30,6 +32,7 @@ namespace Coffee {
 	
 	private:
 		std::unique_ptr<Window> m_Window;
+		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
 

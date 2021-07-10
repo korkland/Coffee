@@ -1,5 +1,7 @@
 #include <Coffee.h>
 
+#include "ImGui/imgui.h"
+
 class ExampleLayer : public Coffee::Layer
 {
 public:
@@ -12,6 +14,13 @@ public:
 	{
 		if (Coffee::Input::IsKeyPressed(CF_KEY_TAB))
 			CF_TRACE("Key Tab is pressed (poll)");
+	}
+
+	virtual void OnImGuiRender() override
+	{
+		ImGui::Begin("Test");
+		ImGui::Text("Hello World");
+		ImGui::End();
 	}
 
 	void OnEvent(Coffee::Event& event) override
@@ -33,7 +42,6 @@ public:
 	Sandbox()
 	{
 		PushLayer(new ExampleLayer());
-		PushOverlay(new Coffee::ImGuiLayer());
 	}
 	~Sandbox()
 	{
